@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.liulkovich.dependencyinjectionhilt.di.Component
+import com.liulkovich.dependencyinjectionhilt.ExampleApp
 import com.liulkovich.dependencyinjectionhilt.domain.Item
 import com.liulkovich.dependencyinjectionhilt.presentation.ui.theme.DependencyInjectionHiltTheme
 
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val component = Component()
+        val component = (application as ExampleApp).component
         component.inject(this)
 
         enableEdgeToEdge()
