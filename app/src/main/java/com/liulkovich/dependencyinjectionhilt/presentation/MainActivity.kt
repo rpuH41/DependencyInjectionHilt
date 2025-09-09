@@ -16,19 +16,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.liulkovich.dependencyinjectionhilt.data.Database
-import com.liulkovich.dependencyinjectionhilt.data.ExampleRepositoryImpl
-import com.liulkovich.dependencyinjectionhilt.domain.ExampleUseCase
+import com.liulkovich.dependencyinjectionhilt.di.Component
 import com.liulkovich.dependencyinjectionhilt.domain.Item
 import com.liulkovich.dependencyinjectionhilt.presentation.ui.theme.DependencyInjectionHiltTheme
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var exampleViewModel: ExampleViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val database = Database()
-        val repository = ExampleRepositoryImpl(database)
-        val exampleUseCase = ExampleUseCase(repository)
+        val component = Component()
+        component.inject(this)
 
         enableEdgeToEdge()
         setContent {
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     ExampleScreen(
                         modifier = Modifier.padding(innerPadding),
                         exampleViewModel = viewModel {
-                            ExampleViewModel(exampleUseCase)
+                            exampleViewModel
                         }
                     )
                 }
