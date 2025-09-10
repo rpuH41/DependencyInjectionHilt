@@ -1,9 +1,11 @@
 package com.liulkovich.dependencyinjectionhilt.domain
 
 import android.util.Log
+import com.liulkovich.dependencyinjectionhilt.data.ExampleRepositoryImpl
+import javax.inject.Inject
 
-class ExampleUseCase(
-    private val repository: ExampleRepository
+class ExampleUseCase @Inject constructor (
+    private val repository: ExampleRepositoryImpl
 ) {
 
     operator fun invoke(item: Item) {

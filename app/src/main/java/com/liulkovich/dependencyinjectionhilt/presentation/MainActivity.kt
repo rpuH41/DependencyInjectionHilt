@@ -19,16 +19,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.liulkovich.dependencyinjectionhilt.ExampleApp
 import com.liulkovich.dependencyinjectionhilt.domain.Item
 import com.liulkovich.dependencyinjectionhilt.presentation.ui.theme.DependencyInjectionHiltTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
     lateinit var exampleViewModel: ExampleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val component = (application as ExampleApp).component
-        component.inject(this)
+//        val component = (application as ExampleApp).component
+//        component.inject(this)
 
         enableEdgeToEdge()
         setContent {
