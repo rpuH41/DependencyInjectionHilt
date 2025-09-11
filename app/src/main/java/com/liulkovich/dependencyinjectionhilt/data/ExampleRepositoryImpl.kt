@@ -10,7 +10,6 @@ class ExampleRepositoryImpl @Inject constructor (
 ) : ExampleRepository {
 
 
-
     override fun exampleMethod(item: Item) {
         Log.d("ExampleTest", "ExampleRepositoryImpl exampleMethod $item")
         database.exampleMethod(item)

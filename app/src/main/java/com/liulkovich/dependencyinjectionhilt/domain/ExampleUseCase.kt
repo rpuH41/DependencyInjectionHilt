@@ -5,7 +5,7 @@ import com.liulkovich.dependencyinjectionhilt.data.ExampleRepositoryImpl
 import javax.inject.Inject
 
 class ExampleUseCase @Inject constructor (
-    private val repository: ExampleRepositoryImpl
+    private val repository: ExampleRepository
 ) {
 
     operator fun invoke(item: Item) {
