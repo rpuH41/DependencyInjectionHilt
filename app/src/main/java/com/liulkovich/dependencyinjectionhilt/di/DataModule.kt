@@ -23,6 +23,7 @@ interface DataModule {
     ): ExampleRepository
 
     companion object {
+
         @Singleton
         @Provides
         fun provideDatabase(

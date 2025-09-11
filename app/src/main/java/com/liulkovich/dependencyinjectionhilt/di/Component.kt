@@ -4,6 +4,7 @@ import android.content.Context
 import com.liulkovich.dependencyinjectionhilt.data.Database
 import com.liulkovich.dependencyinjectionhilt.data.ExampleRepositoryImpl
 import com.liulkovich.dependencyinjectionhilt.domain.ExampleUseCase
+import com.liulkovich.dependencyinjectionhilt.domain.Item
 import com.liulkovich.dependencyinjectionhilt.presentation.ExampleViewModel
 import com.liulkovich.dependencyinjectionhilt.presentation.MainActivity
 
@@ -17,11 +18,11 @@ class Component(
 
     val exampleUseCase = ExampleUseCase(repository)
 
-    val exampleViewModel = ExampleViewModel(exampleUseCase)
+    val exampleViewModel = ExampleViewModel(exampleUseCase, Item(2))
     /*val exampleViewModel
      get()= ExampleViewModel(exampleUseCase) - если нужно чтобы при рекомпозиции вью модель создавалась заново*/
 
     fun inject(mainActivity: MainActivity) {
-        mainActivity.exampleViewModel = exampleViewModel
+//        mainActivity.exampleViewModel = exampleViewModel
     }
 }

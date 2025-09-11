@@ -26,7 +26,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var exampleViewModel: ExampleViewModel
+    lateinit var exampleViewModelFactory: ExampleViewModel.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                     ExampleScreen(
                         modifier = Modifier.padding(innerPadding),
                         exampleViewModel = viewModel {
-                            exampleViewModel
+                            exampleViewModelFactory.create(Item(0))
                         }
                     )
                 }
@@ -64,7 +64,7 @@ fun ExampleScreen(
                 .fillMaxWidth()
                 .padding(16.dp),
             onClick = {
-                exampleViewModel.exampleMethod(Item(0))
+                exampleViewModel.exampleMethod()
             }
         ) {
             Text("Click Me!!!")
